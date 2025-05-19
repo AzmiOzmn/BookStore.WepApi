@@ -1,4 +1,5 @@
 ﻿using BookStore.BusinessLayer.Abstract;
+using BookStore.EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookStore.WepApi.Controllers
@@ -16,9 +17,43 @@ namespace BookStore.WepApi.Controllers
 
         [HttpGet]
         public IActionResult GetAll()
+        {  
+            return Ok(productService.TGetAll());
+        }
+
+        [HttpPost]
+        public IActionResult Insert(Product product)
         {
-            var products = productService.TGetAll();
-            return Ok(products);
+           productService.TInsert(product);
+           return Ok("Ekleme işlemi başarılı");
+        }
+
+        [HttpPut]
+        public IActionResult Update(Product product)
+        {
+            productService.TUpdate(product);
+            return Ok("Güncelleme İşlemi Başarılı");
+        }
+
+        [HttpDelete]
+
+        public IActionResult Delete(int id)
+        {
+            productService.TDelete(id);
+            return Ok("Silme işlemi başarılı");
+        }
+
+        [HttpGet("GetProduct")]
+        public IActionResult GetProduct(int id)
+        {
+            return Ok(productService.TGetById(id));
+        }
+
+        [HttpGet("ProductCount")]
+
+        public IActionResult ProductCount()
+        {
+            return Ok(productService.TGetProductCount());
         }
     }
 }

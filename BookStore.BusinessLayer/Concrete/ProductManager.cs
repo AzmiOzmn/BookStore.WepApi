@@ -6,10 +6,16 @@ namespace BookStore.BusinessLayer.Concrete
 {
     public class ProductManager : GenericManager<Product>, IProductService
     {
-        public ProductManager(IGenericDal<Product> genericDal) : base(genericDal)
+        private readonly IProductDal _productDal;
+
+        public ProductManager(IProductDal productDal) : base(productDal)
         {
+            _productDal = productDal;
         }
 
-
+        public int TGetProductCount()
+        {
+            return _productDal.GetProductCount(); 
+        }
     }
 }

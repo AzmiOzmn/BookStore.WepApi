@@ -4,6 +4,6 @@ namespace BookStore.BusinessLayer.Abstract
 {
     public interface ICategoryService : IGenericService<Category>
     {
-        public List<Category> CategoryNameLength();
+        
     }
 }

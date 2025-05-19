@@ -5,7 +5,7 @@ namespace BookStore.BusinessLayer.Concrete
 {
     public class GenericManager<T> : IGenericService<T> where T : class
     {
-        private readonly IGenericDal<T> _genericDal;
+        protected readonly IGenericDal<T> _genericDal;
 
         public GenericManager(IGenericDal<T> genericDal)
         {

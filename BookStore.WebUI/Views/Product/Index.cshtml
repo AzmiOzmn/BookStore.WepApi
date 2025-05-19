@@ -1,0 +1,40 @@
+﻿
+@model List<ResultProductDto>
+
+@{
+    Layout = null;
+}
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container">
+    <br /><br />
+
+    <table class="table table-bordered">
+        <tr>
+            <th>#</th>
+            <th>Ürün Adı</th>
+            <th>Ürün Stok</th>
+            <th>Ürün Fiyat</th>
+            <th>İşlemler</th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ProductId</td>
+                <td>@item.ProductName</td>
+                <td>@item.ProductStock</td>
+                <td>@item.ProductPrice</td>
+                <td>
+                    <a href="/Product/Delete/@item.ProductId" class="btn btn-danger">Sil</a>
+                    <a href="/Product/Update/@item.ProductId" class="btn btn-success">Güncelle</a>
+                </td>
+            </tr>
+        }
+    </table>
+    <a href="/Product/Insert/" class="btn btn-primary">Yeni Kategori Girişi</a>
+</div>
+
+
+
