@@ -4,12 +4,21 @@ using BookStore.DataAccessLayer.Abstract;
 using BookStore.DataAccessLayer.Context;
 using BookStore.DataAccessLayer.EntityFramework;
 using BookStore.DataAccessLayer.Repositories;
+using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddDbContext<BookStoreContext>();
+builder.Services.AddDbContext<BookStoreContext>(options =>
+{
+    options.UseLazyLoadingProxies()
+           .UseSqlServer("Server=DESKTOP-V5FSJOQ\\OZMEN;Database=BookStore;Integrated Security=true;");
+});
+builder.Services.AddControllers()
+    .AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
+
 
 builder.Services.AddScoped(typeof(IGenericDal<>),typeof(GenericRepository<>));
 builder.Services.AddScoped(typeof(IGenericService<>),typeof(GenericManager<>));
@@ -22,6 +31,14 @@ builder.Services.AddScoped<ICategoryService,CategoryManager>();
 
 builder.Services.AddScoped<IProductDal,EfProductDal>();
 builder.Services.AddScoped<IProductService,ProductManager>();
+
+builder.Services.AddScoped<IAuthorDal, EfAuthorDal>();
+builder.Services.AddScoped<IAuthorService, AuthorManager>();
+
+
+builder.Services.AddScoped<IBannerDal, EfBannerDal>();
+builder.Services.AddScoped<IBannerService, BannerManager>();
+
 
 
 
