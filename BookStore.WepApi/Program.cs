@@ -40,6 +40,15 @@ builder.Services.AddScoped<IAuthorService, AuthorManager>();
 builder.Services.AddScoped<IBannerDal, EfBannerDal>();
 builder.Services.AddScoped<IBannerService, BannerManager>();
 
+builder.Services.AddScoped<IFooterDal, EfFooterDal>();
+builder.Services.AddScoped<IFooterService, FooterManager>();
+
+builder.Services.AddScoped<IQuoteDal, EfQuoteDal>();
+builder.Services.AddScoped<IQuoteService, QuoteManager>();
+
+builder.Services.AddScoped<ISubscribeDal, EfSubscribeDal>();
+builder.Services.AddScoped<ISubscribeService, SubscribeManager>();
+
 
 
 

@@ -13,7 +13,6 @@
   <ItemGroup>
     <Folder Include="FooterDtos\" />
     <Folder Include="SubscribeDtos\" />
-    <Folder Include="QuoteDtos\" />
   </ItemGroup>
 
 </Project>
