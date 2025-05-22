@@ -1,16 +1,34 @@
+using BookStore.DataAccessLayer.Context;
+using BookStore.WepApi.Mapping;
+using MyMvcProject.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// AutoMapper için MappingProfile sýnýfý eklenmeli, örn:
+// builder.Services.AddAutoMapper(typeof(MappingProfile)); 
+// Senin yoksa Program.cs'yi baz alabiliriz, ama MappingProfile olmalý
+
+builder.Services.AddAutoMapper(typeof(ProductMapping)); // Burada Program baz alýnýyor, sorun olmaz.
+
 builder.Services.AddHttpClient();
 builder.Services.AddControllersWithViews();
 
+// Extension metodu çaðrýlarak servisler ekleniyor (DBContext + servisler)
+builder.Services.AddMyDependencies(builder.Configuration);
+
+// **Buradaki aþaðýdaki satýr gereksiz, zaten yukarýda AddMyDependencies içinde DbContext var. Tekrar eklemeye gerek yok**
+// builder.Services.AddDbContext<BookStoreContext>(options =>
+// {
+//     options.UseLazyLoadingProxies()
+//            .UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+// });
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Pipeline ayarlarý
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -24,6 +42,5 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Default}/{action=Index}/{id?}");
-
 
 app.Run();

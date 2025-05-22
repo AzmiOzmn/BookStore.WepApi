@@ -1,4 +1,6 @@
-﻿using BookStore.BusinessLayer.Abstract;
+﻿using AutoMapper;
+using BookStore.BusinessLayer.Abstract;
+using BookStore.DtoLayer.ProductDtos;
 using BookStore.EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,34 +11,38 @@ namespace BookStore.WepApi.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly IProductService productService;
+        private readonly IMapper mapper;
 
-        public ProductsController(IProductService productService)
+        // IMapper bağımlılığını da constructor'a ekledik
+        public ProductsController(IProductService productService, IMapper mapper)
         {
             this.productService = productService;
+            this.mapper = mapper;
         }
 
         [HttpGet]
         public IActionResult GetAll()
-        {  
-            return Ok(productService.TGetAll());
+        {
+            var values = productService.TGetProductWithAuthors(); 
+            var dto = mapper.Map<List<ResultProductDto>>(values);
+            return Ok(dto);
         }
 
         [HttpPost]
         public IActionResult Insert(Product product)
         {
-           productService.TInsert(product);
-           return Ok("Ekleme işlemi başarılı");
+            productService.TInsert(product);
+            return Ok("Ekleme işlemi başarılı");
         }
 
         [HttpPut]
         public IActionResult Update(Product product)
         {
             productService.TUpdate(product);
-            return Ok("Güncelleme İşlemi Başarılı");
+            return Ok("Güncelleme işlemi başarılı");
         }
 
         [HttpDelete]
-
         public IActionResult Delete(int id)
         {
             productService.TDelete(id);
@@ -47,13 +53,6 @@ namespace BookStore.WepApi.Controllers
         public IActionResult GetProduct(int id)
         {
             return Ok(productService.TGetById(id));
-        }
-
-        [HttpGet("ProductCount")]
-
-        public IActionResult ProductCount()
-        {
-            return Ok(productService.TGetProductCount());
         }
     }
 }

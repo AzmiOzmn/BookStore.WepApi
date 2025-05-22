@@ -23,6 +23,7 @@ builder.Services.AddControllers()
 builder.Services.AddScoped(typeof(IGenericDal<>),typeof(GenericRepository<>));
 builder.Services.AddScoped(typeof(IGenericService<>),typeof(GenericManager<>));
 builder.Services.AddScoped<IProductService, ProductManager>();
+builder.Services.AddAutoMapper(typeof(Program));
 
 
 

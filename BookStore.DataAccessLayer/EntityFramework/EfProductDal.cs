@@ -2,21 +2,19 @@
 using BookStore.DataAccessLayer.Context;
 using BookStore.DataAccessLayer.Repositories;
 using BookStore.EntityLayer.Concrete;
+using Microsoft.EntityFrameworkCore;
 
-namespace BookStore.DataAccessLayer.EntityFramework
+public class EfProductDal : GenericRepository<Product>, IProductDal
 {
-    public class EfProductDal : GenericRepository<Product>, IProductDal
+    private readonly BookStoreContext _context;
+
+    public EfProductDal(BookStoreContext context) : base(context)
     {
-        private readonly BookStoreContext _context;
+        _context = context;
+    }
 
-        public EfProductDal(BookStoreContext context) : base(context)
-        {
-            _context = context;
-        }
-
-        public int GetProductCount()
-        {
-            return _context.Products.Count();
-        }
+    public List<Product> GetProductWithAuthors()
+    {
+        return _context.Products.Include(x => x.Author).ToList();
     }
 }

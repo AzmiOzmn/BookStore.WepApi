@@ -13,9 +13,9 @@ namespace BookStore.BusinessLayer.Concrete
             _productDal = productDal;
         }
 
-        public int TGetProductCount()
+        public List<Product> TGetProductWithAuthors()
         {
-            return _productDal.GetProductCount(); 
+          return _productDal.GetProductWithAuthors();
         }
     }
 }

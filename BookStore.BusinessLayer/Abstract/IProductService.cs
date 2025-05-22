@@ -4,6 +4,7 @@ namespace BookStore.BusinessLayer.Abstract
 {
     public interface IProductService : IGenericService<Product>
     {
-        public int TGetProductCount();
+       
+        List<Product> TGetProductWithAuthors();
     }
 }

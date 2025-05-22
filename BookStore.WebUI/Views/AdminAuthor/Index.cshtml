@@ -1,0 +1,38 @@
+﻿@using BookStore.DtoLayer.AuthorDtos
+@model List<ResultAuthorDto>
+
+@{
+    Layout = null;
+    int count = 0;
+}
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container">
+    <br /><br />
+
+    <table class="table table-bordered">
+        <tr>
+            <th>#</th>
+            <th>Yazar Adı</th>
+            
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            count++;
+            <tr>
+                <td>@count</td>
+                <td>@item.Name</td>
+                <td>
+                    <a href="/AdminAuthor/Delete/@item.AuthorId" class="btn btn-danger">Sil</a>
+                    <a href="/AdminAuthor/Update/@item.AuthorId" class="btn btn-success">Güncelle</a>
+                </td>
+            </tr>
+        }
+    </table>
+    <a href="/AdminAuthor/Insert/" class="btn btn-primary">Yeni Yazar Girişi</a>
+</div>
+
+
+
