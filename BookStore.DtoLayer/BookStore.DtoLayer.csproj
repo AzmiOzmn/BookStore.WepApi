@@ -10,9 +10,4 @@
     <ProjectReference Include="..\BookStore.EntityLayer\BookStore.EntityLayer.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="FooterDtos\" />
-    <Folder Include="SubscribeDtos\" />
-  </ItemGroup>
-
 </Project>

@@ -28,109 +28,40 @@
 		</div>
 	</section>
 
-	<section id="featured-books" class="py-5 my-5">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-
-					<div class="section-header align-center">
-						<div class="title">
-							<span>Some quality items</span>
-						</div>
-						<h2 class="section-title">Featured Books</h2>
-					</div>
-
-					<div class="product-list" data-aos="fade-up">
-						<div class="row">
-
-							<div class="col-md-3">
-								<div class="product-item">
-									<figure class="product-style">
-										<img src="~/booksaw-1.0.0/images/product-item1.jpg" alt="Books" class="product-item">
-										<button type="button" class="add-to-cart" data-product-tile="add-to-cart">
-											Add to
-											Cart
-										</button>
-									</figure>
-									<figcaption>
-										<h3>Simple way of piece life</h3>
-										<span>Armor Ramsey</span>
-										<div class="item-price">$ 40.00</div>
-									</figcaption>
-								</div>
-							</div>
-
-							<div class="col-md-3">
-								<div class="product-item">
-									<figure class="product-style">
-										<img src="~/booksaw-1.0.0/images/product-item2.jpg" alt="Books" class="product-item">
-										<button type="button" class="add-to-cart" data-product-tile="add-to-cart">
-											Add to
-											Cart
-										</button>
-									</figure>
-									<figcaption>
-										<h3>Great travel at desert</h3>
-										<span>Sanchit Howdy</span>
-										<div class="item-price">$ 38.00</div>
-									</figcaption>
-								</div>
-							</div>
-
-							<div class="col-md-3">
-								<div class="product-item">
-									<figure class="product-style">
-										<img src="~/booksaw-1.0.0/images/product-item3.jpg" alt="Books" class="product-item">
-										<button type="button" class="add-to-cart" data-product-tile="add-to-cart">
-											Add to
-											Cart
-										</button>
-									</figure>
-									<figcaption>
-										<h3>The lady beauty Scarlett</h3>
-										<span>Arthur Doyle</span>
-										<div class="item-price">$ 45.00</div>
-									</figcaption>
-								</div>
-							</div>
-
-							<div class="col-md-3">
-								<div class="product-item">
-									<figure class="product-style">
-										<img src="~/booksaw-1.0.0/images/product-item4.jpg" alt="Books" class="product-item">
-										<button type="button" class="add-to-cart" data-product-tile="add-to-cart">
-											Add to
-											Cart
-										</button>
-									</figure>
-									<figcaption>
-										<h3>Once upon a time</h3>
-										<span>Klien Marry</span>
-										<div class="item-price">$ 35.00</div>
-									</figcaption>
-								</div>
-							</div>
-
-						</div><!--ft-books-slider-->
-					</div><!--grid-->
-
-
-				</div><!--inner-content-->
-			</div>
-
-			<div class="row">
-				<div class="col-md-12">
-
-					<div class="btn-wrap align-right">
-						<a href="#" class="btn-accent-arrow">
-							View all products <i class="icon icon-ns-arrow-right"></i>
-						</a>
-					</div>
-
+    @await Component.InvokeAsync("_DefaultFeatureComponent")
+	<!-- Modal -->
+	<div class="modal fade" id="bookDescriptionModal" tabindex="-1" role="dialog" aria-labelledby="bookTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+			<div class="modal-content" style="border-radius: 0px;">
+				<div class="modal-header" style="background-color: #000; color: #fff; padding: 10px 20px; border-bottom: 1px solid #444; box-shadow: 0 2px 4px rgba(0,0,0,0.5);">
+					<h5 class="modal-title" id="bookTitle" style="font-size: 18px; margin: 0; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.7);">Kitap Başlığı</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Kapat" style="color: #fff;">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body" id="bookDescription" style="padding: 30px; font-size: 16px; background-color: #f9f9f9; color: #000;">
+					Açıklama buraya gelecek
 				</div>
 			</div>
 		</div>
-	</section>
+	</div>
+
+	@section Scripts {
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+		<script>
+			$('#bookDescriptionModal').on('show.bs.modal', function (event) {
+				var button = $(event.relatedTarget);
+				var title = button.data('title');
+				var description = button.data('description');
+
+				var modal = $(this);
+				modal.find('#bookTitle').text(title);
+				modal.find('#bookDescription').text(description);
+			});
+		</script>
+	}
 
 	<section id="best-selling" class="leaf-pattern-overlay">
 		<div class="corner-pattern-overlay"></div>

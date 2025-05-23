@@ -1,0 +1,23 @@
+﻿@using BookStore.DtoLayer.QuoteDtos
+@model InsertQuoteDto
+@{
+    ViewData["Title"] = "Alıntılar";
+    ViewData["Description"] = "Alıntı Ekle";
+    Layout = "~/Views/AdminLayout/AdminLayout.cshtml";
+}
+
+<form method="post">
+    <div class="container">
+        <br /><br />
+
+        <label>Alıntı</label>
+        <input type="text" asp-for="Description" class="form-control" />
+        <br />
+        <label>Yazar</label>
+        <input type="text" asp-for="AuthorName" class="form-control" />
+        <br />
+        <br />
+        <button class="btn btn-primary">Alıntı Ekle</button>
+    </div>
+</form>
+

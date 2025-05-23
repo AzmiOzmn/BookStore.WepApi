@@ -1,0 +1,20 @@
+﻿@using BookStore.DtoLayer.FooterDtos
+@model InsertFooterDto
+@{
+    ViewData["Title"] = "Footers";
+    ViewData["Description"] = "Footer Ekle";
+    Layout = "~/Views/AdminLayout/AdminLayout.cshtml";
+}
+
+<form method="post">
+    <div class="container">
+        <br /><br />
+
+        <label>Açıklama</label>
+        <input type="text" asp-for="Description" class="form-control" />
+        <br />
+        
+        <button class="btn btn-primary">Açıklama Ekle</button>
+    </div>
+</form>
+

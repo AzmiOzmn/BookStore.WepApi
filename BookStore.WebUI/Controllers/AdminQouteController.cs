@@ -1,29 +1,30 @@
-﻿using BookStore.DtoLayer.AuthorDtos;
-using BookStore.DtoLayer.ProductDtos;
+﻿using BookStore.DtoLayer.QuoteDtos;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
 
 namespace BookStore.WebUI.Controllers
 {
-    public class AdminAuthorController : Controller
+    public class AdminQouteController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public AdminAuthorController(IHttpClientFactory httpClientFactory)
+        public AdminQouteController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
-        }
+        } 
 
         public async Task<IActionResult> Index()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7227/api/Authors");
+            var responseMessage = await client.GetAsync("https://localhost:7227/api/Quote");
             var jsonData = await responseMessage.Content.ReadAsStringAsync();
-            var values = JsonConvert.DeserializeObject<List<ResultAuthorDto>>(jsonData);
+            var values = JsonConvert.DeserializeObject<List<ResultQuoteDto>>(jsonData);
             return View(values);
         }
+
         [HttpGet]
+       
 
         public IActionResult Insert()
         {
@@ -32,12 +33,12 @@ namespace BookStore.WebUI.Controllers
 
         [HttpPost]
 
-        public async Task<IActionResult> Insert(InsertAuthorDto model)
+        public async Task<IActionResult> Insert(InsertQuoteDto model)
         {
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(model);
             StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:7227/api/Authors", content);
+            var responseMessage = await client.PostAsync("https://localhost:7227/api/Quote", content);
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");
@@ -48,7 +49,7 @@ namespace BookStore.WebUI.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.DeleteAsync("https://localhost:7227/api/Authors?id=" + id);
+            var responseMessage = await client.DeleteAsync("https://localhost:7227/api/Quote?id=" + id);
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");
@@ -60,11 +61,11 @@ namespace BookStore.WebUI.Controllers
         public async Task<IActionResult> Update(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7227/api/Authors/GetAuthor?id=" + id);
+            var responseMessage = await client.GetAsync("https://localhost:7227/api/Quote?id=" + id);
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<GetByIdaAuthorDto>(jsonData);
+                var values = JsonConvert.DeserializeObject<GetByIdQuoteDto>(jsonData);
                 return View(values);
             }
             return View();
@@ -72,12 +73,12 @@ namespace BookStore.WebUI.Controllers
 
         [HttpPost]
 
-        public async Task<IActionResult> Update(UpdateAuthorDto model)
+        public async Task<IActionResult> Update(UpdateQuoteDto model)
         {
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(model);
             StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PutAsync("https://localhost:7227/api/Authors", content);
+            var responseMessage = await client.PutAsync("https://localhost:7227/api/Quote", content);
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");
@@ -85,5 +86,6 @@ namespace BookStore.WebUI.Controllers
             return View();
         }
     }
+
 }
 

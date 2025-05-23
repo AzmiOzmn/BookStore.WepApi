@@ -2,10 +2,12 @@
 @model List<ResultAuthorDto>
 
 @{
-    Layout = null;
+    ViewData["Title"] = "Yazarlar";
+    ViewData["Description"] = "Yazar Listesi";
+    Layout = "~/Views/AdminLayout/AdminLayout.cshtml";
     int count = 0;
 }
-<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
 
 <div class="container">
     <br /><br />

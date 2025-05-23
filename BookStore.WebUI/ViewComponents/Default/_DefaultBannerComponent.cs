@@ -5,9 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BookStore.WebUI.ViewComponents.Default
 {
-
-
-
     public class _DefaultBannerComponent : ViewComponent
     {
         private readonly IProductService _productService;

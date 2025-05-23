@@ -1,0 +1,37 @@
+﻿@using BookStore.DtoLayer.FooterDtos
+@model List<ResultFooterDto>
+@{
+    ViewData["Title"] = "Footers";
+    ViewData["Description"] = "Footer Listesi"; 
+    Layout = "~/Views/AdminLayout/AdminLayout.cshtml";
+    int count = 0;  
+}
+
+
+<div class="container">
+    <br /><br />
+
+    <table class="table table-bordered">
+        <tr>
+            <th>#</th>
+            <th>Açıklama</th>
+            <th>İşlemler</th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            count++;
+            <tr>
+                <td>@count</td>
+                <td>@item.Description</td>
+                <td>
+                    <a href="/Footer/Delete/@item.FooterId" class="btn btn-danger">Sil</a>
+                    <a href="/Footer/Update/@item.FooterId" class="btn btn-success">Güncelle</a>
+                </td>
+            </tr>
+        }
+    </table>
+    <a href="/Footer/Insert/" class="btn btn-primary">Yeni Footer Girişi</a>
+</div>
+

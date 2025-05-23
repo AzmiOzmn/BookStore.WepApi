@@ -1,0 +1,37 @@
+﻿@using BookStore.DtoLayer.QuoteDtos
+@model List<ResultQuoteDto>
+@{
+    ViewData["Title"] = "Alıntılar";
+    ViewData["Description"] = "Alıntı Listesi";
+    Layout = "~/Views/AdminLayout/AdminLayout.cshtml";
+    int count = 0;
+}
+
+<div class="container">
+    <br /><br />
+
+    <table class="table table-bordered">
+        <tr>
+            <th>#</th>
+            <th>Alıntı</th>
+            <th>Yazar</th>
+            <th>İşlemler</th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            count++;
+            <tr>
+                <td>@count</td>
+                <td>@item.Description</td>
+                <td>@item.AuthorName</td>
+                <td>
+                    <a href="/Quote/Delete/@item.QuoteId" class="btn btn-danger">Sil</a>
+                    <a href="/Quote/Update/@item.QuoteId" class="btn btn-success">Güncelle</a>
+                </td>
+            </tr>
+        }
+    </table>
+    <a href="/Quote/Insert/" class="btn btn-primary">Yeni Alıntı Girişi</a>
+</div>

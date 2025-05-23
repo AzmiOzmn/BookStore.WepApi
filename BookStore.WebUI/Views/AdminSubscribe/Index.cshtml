@@ -1,0 +1,41 @@
+﻿@using BookStore.DtoLayer.SubscribeDtos
+@model List<ResultSubscribeDto>
+
+@{
+    ViewData["Title"] = "Abonelikler";
+    ViewData["Description"] = "Abone Listesi";
+    Layout = "~/Views/AdminLayout/AdminLayout.cshtml";
+}
+
+
+<div class="container">
+    <br /><br />
+
+    <table class="table table-bordered">
+        <tr>
+            <th>#</th>
+            <th>Açıklama</th>
+            <th>Mail</th> 
+            <th>İşlemler</th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.SubscribeId</td>
+                <td>@item.Description</td>
+                <td>@item.Email</td>
+                
+                <td>
+                    <a href="/Subscribe/Delete/@item.SubscribeId" class="btn btn-danger">Sil</a>
+                    <a href="/Subscribe/Update/@item.SubscribeId" class="btn btn-success">Güncelle</a>
+                </td>
+            </tr>
+        }
+    </table>
+    <a href="/Subscribe/Insert/" class="btn btn-primary">Yeni Abone Girişi</a>
+</div>
+
+
+

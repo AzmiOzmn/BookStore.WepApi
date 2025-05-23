@@ -1,9 +1,10 @@
 ﻿@using BookStore.DtoLayer.AuthorDtos
 @model GetByIdaAuthorDto
 @{
-    Layout = null;
+    ViewData["Title"] = "Yazarlar";
+    ViewData["Description"] = "Yazar Güncelle";
+    Layout = "~/Views/AdminLayout/AdminLayout.cshtml";
 }
-<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 
 <form method="post">
     <input type="hidden" asp-for="AuthorId" />
