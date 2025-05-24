@@ -1,0 +1,39 @@
+﻿@model ResultProductDto
+@*
+  _DefaultBestSellingComponent
+*@
+
+@if (Model != null)
+{
+	<section id="best-selling" class="leaf-pattern-overlay">
+		<div class="corner-pattern-overlay"></div>
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-8">
+					<div class="row">
+						<div class="col-md-6">
+							<figure class="products-thumb">
+								<img src="@Model.ImageUrl" alt="book" class="single-image" style="width:400;height:500;">
+							</figure>
+						</div>
+
+						<div class="col-md-6">
+							<div class="product-entry">
+								<h2 class="section-title divider">En Çok Satanlar</h2>
+								<div class="products-content">
+									<div class="author-name">@Model.AuthorName</div>
+									<h3 class="item-title">@Model.ProductName</h3>
+									<p>@Model.Description</p>
+									<div class="item-price">₺ @Model.ProductPrice</div>
+									<div class="btn-wrap">
+										
+									</div>
+								</div>
+							</div>
+						</div>
+					</div><!-- / row -->
+				</div>
+			</div>
+		</div>
+	</section>
+}

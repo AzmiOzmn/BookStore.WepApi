@@ -13,6 +13,11 @@ namespace BookStore.BusinessLayer.Concrete
             _productDal = productDal;
         }
 
+        public List<Product> TGetProductsWithCategoryAndAuthor()
+        {
+           return _productDal.GetProductsWithCategoryAndAuthor();
+        }
+
         public List<Product> TGetProductWithAuthors()
         {
           return _productDal.GetProductWithAuthors();

@@ -6,5 +6,7 @@ namespace BookStore.DataAccessLayer.Abstract
     {
 
         List<Product> GetProductWithAuthors();
+
+        public List<Product> GetProductsWithCategoryAndAuthor();
     }
 }

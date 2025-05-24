@@ -9,7 +9,9 @@ namespace BookStore.WepApi.Mapping
         public ProductMapping()
         {
             CreateMap<Product, ResultProductDto>()
-                .ForMember(dest => dest.AuthorName, opt => opt.MapFrom(src => src.Author.Name)).ReverseMap();
+     .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.CategoryName))
+     .ForMember(dest => dest.AuthorName, opt => opt.MapFrom(src => src.Author.Name));
+
         }
     }
 }

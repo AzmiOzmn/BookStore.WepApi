@@ -16,6 +16,8 @@
 
         public string? AuthorName { get; set; }
 
+        public string? CategoryName { get; set; }
+
 
     }
 }

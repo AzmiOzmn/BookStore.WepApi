@@ -13,6 +13,14 @@ public class EfProductDal : GenericRepository<Product>, IProductDal
         _context = context;
     }
 
+    public List<Product> GetProductsWithCategoryAndAuthor()
+    {
+       return _context.Products
+            .Include(p => p.Category)
+            .Include(p => p.Author)
+            .ToList();
+    }
+
     public List<Product> GetProductWithAuthors()
     {
         return _context.Products.Include(x => x.Author).ToList();

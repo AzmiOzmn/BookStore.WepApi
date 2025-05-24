@@ -6,5 +6,7 @@ namespace BookStore.BusinessLayer.Abstract
     {
        
         List<Product> TGetProductWithAuthors();
+
+        List<Product> TGetProductsWithCategoryAndAuthor();
     }
 }
