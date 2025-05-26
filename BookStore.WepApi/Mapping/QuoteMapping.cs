@@ -8,7 +8,7 @@ namespace BookStore.WepApi.Mapping
     {
         public QuoteMapping()
         {
-            CreateMap<Quote, ResultQuoteDto>().ReverseMap();
+            CreateMap<Quote, ResultQuoteDto>()/*.ForMember(dest => dest.AuthorName, opt => opt.MapFrom(src => src.Author.Name))*/.ReverseMap();
             CreateMap<Quote, UpdateQuoteDto>().ReverseMap();
             CreateMap<Quote, InsertQuoteDto>().ReverseMap();
             CreateMap<Quote, GetByIdQuoteDto>().ReverseMap();
