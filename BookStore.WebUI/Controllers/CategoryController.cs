@@ -35,18 +35,23 @@ namespace BookStore.WebUI.Controllers
         }
 
         [HttpPost]
-
-        public async Task<IActionResult>  Insert(InsertCategoryDto insertCategoryDto)
+        public async Task<IActionResult> Insert(InsertCategoryDto insertCategoryDto)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(insertCategoryDto); // Hatalı model varsa form geri döner
+            }
+
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(insertCategoryDto);
-            StringContent content = new StringContent(jsonData,Encoding.UTF8,"application/json");
+            StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
             var responseMessage = await client.PostAsync("https://localhost:7227/api/Categories", content);
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("CategoryList");
             }
-            return View();
+
+            return View(insertCategoryDto); // API başarısızsa da formu geri döndür
         }
 
         public async Task<IActionResult> Delete(int id)

@@ -1,0 +1,122 @@
+﻿@using BookStore.DtoLayer.FooterDtos
+@model List<ResultFooterDto>
+@*
+   _FooterComponent
+*@
+
+<footer id="footer">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-md-4">
+
+				<div class="footer-item">
+					<div class="company-brand">
+						<img src="~/booksaw-1.0.0/images/main-logo.png" alt="logo" class="footer-logo">
+						@foreach (var item in Model)
+						{
+							<p>
+								@item.Description
+							</p>
+						}
+					</div>
+				</div>
+
+			</div>
+
+			<div class="col-md-2">
+
+				<div class="footer-menu">
+					<h5>Hakkımızda</h5>
+					<ul class="menu-list">
+						<li class="menu-item">
+							<a href="#">Vizyon</a>
+						</li>
+						<li class="menu-item">
+							<a href="#">Yazılar</a>
+						</li>
+						<li class="menu-item">
+							<a href="#">Kariyer</a>
+						</li>
+						<li class="menu-item">
+							<a href="#">Hizmet Şartları</a>
+						</li>
+						<li class="menu-item">
+							<a href="#">Bağış Yap</a>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+			<div class="col-md-2">
+
+				<div class="footer-menu">
+					<h5>Keşfet</h5>
+					<ul class="menu-list">
+						<li class="menu-item">
+							<a href="#">Anasayfa</a>
+						</li>
+						<li class="menu-item">
+							<a href="#">Kitaplar</a>
+						</li>
+						<li class="menu-item">
+							<a href="#">Yazarlar</a>
+						</li>
+						<li class="menu-item">
+							<a href="#">Kategoriler</a>
+						</li>
+						<li class="menu-item">
+							<a href="#">Gelişmiş Arama</a>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+			<div class="col-md-2">
+
+				<div class="footer-menu">
+					<h5>Hesabım</h5>
+					<ul class="menu-list">
+						<li class="menu-item">
+							<a href="#">Giriş Yap</a>
+						</li>
+						<li class="menu-item">
+							<a href="#">Sepetim</a>
+						</li>
+						<li class="menu-item">
+							<a href="#">İstek Listem</a>
+						</li>
+						<li class="menu-item">
+							<a href="#">Sipariş Takibi</a>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+			<div class="col-md-2">
+
+				<div class="footer-menu">
+					<h5>Yardım</h5>
+					<ul class="menu-list">
+						<li class="menu-item">
+							<a href="#">Yardım Merkezi</a>
+						</li>
+						<li class="menu-item">
+							<a href="#">Sorun Bildir</a>
+						</li>
+						<li class="menu-item">
+							<a href="#">Düzenleme Öner</a>
+						</li>
+						<li class="menu-item">
+							<a href="#">İletişim</a>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+
+		</div>
+		<!-- / row -->
+
+	</div>
+</footer>

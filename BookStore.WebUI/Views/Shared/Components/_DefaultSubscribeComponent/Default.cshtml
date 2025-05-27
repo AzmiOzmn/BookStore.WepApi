@@ -7,22 +7,21 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="title-element">
-                            <h2 class="section-title divider">Subscribe to our newsletter</h2>
+                            <h2 class="section-title divider">Bültenimize Abone Olun</h2>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="subscribe-content" data-aos="fade-up">
                             <p>
-                                Sed eu feugiat amet, libero ipsum enim pharetra hac dolor sit amet, consectetur.
-                                Elit adipiscing enim pharetra hac.
+                                En güncel kitaplar, kampanyalar ve haberlerden ilk siz haberdar olun. Hemen e-posta adresinizi bırakın!
                             </p>
 
                             <!-- ✅ AJAX ile gönderilecek form -->
                             <form id="subscribeForm">
-                                <input type="text" name="email" id="emailInput" placeholder="Enter your email address here" />
+                                <input type="text" name="email" id="emailInput" placeholder="E-posta adresinizi girin" />
                                 <span id="emailError" class="text-danger"></span>
                                 <button class="btn-subscribe" type="submit">
-                                    <span>send</span>
+                                    <span>Gönder</span>
                                     <i class="icon icon-send"></i>
                                 </button>
                             </form>
@@ -77,7 +76,7 @@
                 document.getElementById("emailInput").value = "";
             })
             .catch(error => {
-                console.error("AJAX Error:", error);
+                console.error("AJAX Hatası:", error);
             });
         });
     });
