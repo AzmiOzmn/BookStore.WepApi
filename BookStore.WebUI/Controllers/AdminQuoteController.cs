@@ -5,11 +5,11 @@ using System.Text;
 
 namespace BookStore.WebUI.Controllers
 {
-    public class AdminQouteController : Controller
+    public class AdminQuoteController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public AdminQouteController(IHttpClientFactory httpClientFactory)
+        public AdminQuoteController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         } 

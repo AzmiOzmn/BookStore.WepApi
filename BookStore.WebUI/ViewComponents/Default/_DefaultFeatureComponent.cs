@@ -19,8 +19,13 @@ namespace BookStore.WebUI.ViewComponents.Default
         public IViewComponentResult Invoke()
         {
             var values = productService.TGetProductWithAuthors();
-            var dto = _mapper.Map<List<ResultProductDto>>(values);
+
+          
+            var latest4Books = values.OrderByDescending(x => x.ProductId).Take(4).ToList();
+
+            var dto = _mapper.Map<List<ResultProductDto>>(latest4Books);
             return View(dto);
         }
+
     }
 }

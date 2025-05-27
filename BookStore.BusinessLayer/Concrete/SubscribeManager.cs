@@ -6,8 +6,12 @@ namespace BookStore.BusinessLayer.Concrete
 {
     public class SubscribeManager : GenericManager<Subscribe>, ISubscribeService
     {
-        public SubscribeManager(IGenericDal<Subscribe> genericDal) : base(genericDal)
+        ISubscribeDal subscribes;
+        public SubscribeManager(IGenericDal<Subscribe> genericDal, ISubscribeDal subscribe) : base(genericDal)
         {
+            this.subscribes = subscribe;
         }
+
+        
     }
 }

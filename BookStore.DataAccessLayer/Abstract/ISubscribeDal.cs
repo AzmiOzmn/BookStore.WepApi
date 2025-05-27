@@ -4,5 +4,6 @@ namespace BookStore.DataAccessLayer.Abstract
 {
     public interface ISubscribeDal : IGenericDal<Subscribe>
     {
+      
     }
 }

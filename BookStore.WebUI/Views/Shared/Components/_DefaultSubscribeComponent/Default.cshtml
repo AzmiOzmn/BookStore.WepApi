@@ -1,0 +1,84 @@
+﻿@model BookStore.DtoLayer.SubscribeDtos.InsertSubscribeDto
+
+<section id="subscribe">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="title-element">
+                            <h2 class="section-title divider">Subscribe to our newsletter</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="subscribe-content" data-aos="fade-up">
+                            <p>
+                                Sed eu feugiat amet, libero ipsum enim pharetra hac dolor sit amet, consectetur.
+                                Elit adipiscing enim pharetra hac.
+                            </p>
+
+                            <!-- ✅ AJAX ile gönderilecek form -->
+                            <form id="subscribeForm">
+                                <input type="text" name="email" id="emailInput" placeholder="Enter your email address here" />
+                                <span id="emailError" class="text-danger"></span>
+                                <button class="btn-subscribe" type="submit">
+                                    <span>send</span>
+                                    <i class="icon icon-send"></i>
+                                </button>
+                            </form>
+
+                            <div id="subscribeResult" class="mt-2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ✅ AJAX Script -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("subscribeForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const email = document.getElementById("emailInput").value;
+            const emailError = document.getElementById("emailError");
+            const resultDiv = document.getElementById("subscribeResult");
+
+            emailError.textContent = "";
+            resultDiv.textContent = "";
+            resultDiv.classList.remove("text-danger", "text-success");
+
+            fetch("/AdminSubscribe/Insert", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ email: email })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.json().then(data => {
+                        if (data.errors && data.errors.Email) {
+                            emailError.textContent = data.errors.Email[0];
+                        } else {
+                            resultDiv.textContent = "Bir hata oluştu.";
+                            resultDiv.classList.add("text-danger");
+                        }
+                        throw new Error("Validation error");
+                    });
+                }
+                return response.json();
+            })
+            .then(data => {
+                resultDiv.textContent = "Teşekkürler! Aboneliğiniz başarıyla kaydedildi.";
+                resultDiv.classList.add("text-success");
+                document.getElementById("emailInput").value = "";
+            })
+            .catch(error => {
+                console.error("AJAX Error:", error);
+            });
+        });
+    });
+</script>
