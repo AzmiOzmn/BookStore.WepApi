@@ -44,4 +44,4 @@
 3) *Admin Paneli*
 ![AdminPaneli](https://github.com/user-attachments/assets/27508c16-5c6f-4fd7-b894-906e1a4c2270)
 
-*Projeyi beğendiyseniz lütfen ⭐ bırakmayı unutmayın!*
+   *Projeyi beğendiyseniz lütfen ⭐ bırakmayı unutmayın!*
