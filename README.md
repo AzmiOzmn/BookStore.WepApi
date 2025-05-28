@@ -29,7 +29,8 @@
 - ASP.NET MVC
 - Entity Framework Core (DB First)  
 - AJAX (abonelik işlemleri için)  
-- Swagger  
+- Swagger
+- AutoMapper 
 
 ---
 
