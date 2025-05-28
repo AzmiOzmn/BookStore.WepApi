@@ -29,6 +29,12 @@ namespace MyMvcProject.Extensions
 
             services.AddScoped<IFooterDal, EfFooterDal>();
             services.AddScoped<IFooterService, FooterManager>();
+
+            services.AddScoped<IAuthorDal, EfAuthorDal>();
+            services.AddScoped<IAuthorService, AuthorManager>();
+
+            services.AddScoped<ICategoryDal, EfCategoryDal>();
+            services.AddScoped<ICategoryService, CategoryManager>();
             // Diğer servisler varsa buraya eklenebilir
 
             return services;
