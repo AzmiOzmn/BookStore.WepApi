@@ -10,7 +10,7 @@
 - Data Access Layer  
 - Business Layer  
 - API Katmanı  
-- UI Katmanı (Kullanıcı ve Admin Paneli)  
+- UI Katmanı 
 
 ---
 
